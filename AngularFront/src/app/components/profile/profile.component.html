@@ -1,0 +1,143 @@
+<!--Main View My Account-->
+<div class="container container-fluid" style="background-color:#ffffff;" *ngIf="!checkstatustodisplayupdateform()">
+    <form class="form-inline">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a [routerLink]="['/dashboard']"><span>Dashboard </span></a></li>
+                    <li><a><span>My Account</span></a></li>
+                </ol>
+            </div>
+            <div class="col-md-6 col-md-offset-3" style="margin-top:90px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" style="font-size:25px;"><strong>Personal info</strong></h1></div>
+                    <div class="panel-body">
+
+
+                        <fieldset>
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><strong>User Name</strong></label>
+                                        <p>{{ currentUser?.username }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><strong>Full Name</strong></label>
+                                        <p>{{ currentUser?.name }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><strong>Email</strong></label>
+                                        <p>{{ currentUser?.email }}</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><strong>Participatory Project
+                                            Count</strong></label>
+                                        <p>{{ currentUser?.projectCount }}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><strong>Skills</strong></label>
+                                        <ul>
+                                            <li>{{ currentUser?.skills }}</li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <a class="btn btn-success" type="button"
+                                           (click)="changestatustodisplayupdateaccountform()">Update My Personal
+                                            Info</a>
+                                        <a class="btn btn-danger" type="button" (click)="deleteUsr(currentUser.email)">Delete
+                                            My Account</a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--Update My Personl Info-->
+<div *ngIf="checkstatustodisplayupdateform()" class="container container-fluid" style="background-color:#ffffff;">
+    <form (submit)="updateaccount(currentUser?.email)">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a [routerLink]="['/dashboard']"><span>Dashboard </span></a></li>
+                    <li><a><span>My Account</span></a></li>
+                    <li><a><span>Update My Personal Info</span></a></li>
+                </ol>
+            </div>
+            <div class="col-md-6 col-md-offset-3" style="margin-top:2px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" style="font-size:25px;"><strong>Update my Personal info</strong></h1>
+                    </div>
+                    <div class="panel-body">
+                        <fieldset>
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    <legend style="font-size:18px;"><strong>Fill Below Details To Update My Personal
+                                        info</strong></legend>
+
+
+                                    <div class="form-group">    <!-- Project Title-->
+                                        <label class="control-label">Full Name</label>
+                                        <input type="text" class="form-control"
+                                               placeholder="Enter Your full name here to update" name="name"
+                                               [(ngModel)]="name">
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label class="control-label">My Skills </label>
+                                        <textarea class="form-control" required
+                                                  placeholder="Enter Your all skills here!!" name="skills"
+                                                  [(ngModel)]="skills"></textarea>
+                                    </div>
+
+
+                                    <div *ngIf="!formValidateUpdateProfile()" class="form-group">
+                                        <button class="btn btn-primary" type="submit">Confirm</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+

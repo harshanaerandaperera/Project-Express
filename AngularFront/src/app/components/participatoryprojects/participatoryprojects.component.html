@@ -1,0 +1,46 @@
+<div class="container container-fluid" style="background-color:#ffffff;">
+  <form class="form-inline">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li><a [routerLink]="['/dashboard']"><span>Dashboard </span></a></li>
+          <li><a><span>Participatory Projects</span></a></li>
+        </ol>
+      </div>
+      <div class="col-md-10 col-md-offset-1" style="margin-top:90px;">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title" style="font-size:25px;"><strong>View Participatory Projects</strong></h1></div>
+          <div class="panel-body">
+            <legend style="font-size:18px;"><strong>Below Is The List of Projects that I'm Involved</strong></legend>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>Project Title</th>
+                  <th>Project Manger</th>
+                  <th>Project Details </th>
+                  <th>Project Deadline</th>
+                  <th>Collaborators</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let project of memberProjects">
+                  <td>{{project.projectTitle}}</td>
+                  <td>{{project.projectMangerEmail}} </td>
+                  <td>{{project.projectDetails}}</td>
+                  <td>{{project.projectDeadLine}} </td>
+                  <td>{{project.projectMembersEmail}}</td>
+
+                </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

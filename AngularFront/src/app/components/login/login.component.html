@@ -1,0 +1,52 @@
+<form (submit)="loginData()">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3" style="margin-top:90px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title" style="font-size:25px;"><strong>Sign in</strong> </h1></div>
+        <div class="panel-body">
+          <fieldset>
+            <legend style="font-size:18px;"><strong>to continue to PMS</strong></legend>
+          </fieldset>
+          <fieldset>
+            <div class="row">
+
+
+
+              <div class="col-md-12">         <!-- Email-->
+                <div class="form-group">
+                  <label class="control-label">Email</label>
+                  <input type="email" class="form-control"   placeholder="Enter your email" required="" name="email" [(ngModel)]="email">
+                </div>
+              </div>
+
+
+              <div class="col-md-12">         <!-- password-->
+                <div class="form-group">
+                  <label class="control-label">Password</label>
+                  <input type="password" class="form-control" placeholder="Enter your password" required="" name="password" [(ngModel)]="password" >
+                </div>
+              </div>
+
+
+              <div class="col-md-12">       <!-- Sign In button-->
+                <div class="form-group">
+                  <button class="btn btn-primary" type="Sign In">Sign In</button>
+                </div>
+              </div>
+
+              <div class="col-sm-8">      <!-- Create Account link-->
+                <label class="control-label">Don't have an account? </label>
+                <a class="nav-link" [routerLink]="['/register']">Create Account</a>
+              </div>
+
+
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+

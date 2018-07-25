@@ -1,0 +1,29 @@
+<nav class="navbar navbar-inverse navigation-clean">
+  <div class="container" >
+
+    <!-- routerLink = The directive for binding a clickable HTML element to a route. Clicking an element with a routerLink directive that is bound to a string or a link parameters array triggers a navigation.-->
+    <div class="navbar-header"><a class="navbar-brand navbar-link" [routerLink]="['/dashboard']">Project Express</a>
+      <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navcol-1" >
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <!--The loggedIn method can now be used in views to conditionally hide and show elements.-->
+            <li  *ngIf="authService.loggedIn()" > <a [routerLink]="['/projectlog']">My Project Log</a>  </li>
+
+
+            <li class="dropdown"  *ngIf="authService.loggedIn()"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Hi, {{currentUser?.name}} <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li  *ngIf="authService.loggedIn()" > <a [routerLink]="['/profile']">My Account </a>  </li>  <!-- routerLink = The directive for binding a clickable HTML element to a route. Clicking an element with a routerLink directive that is bound to a string or a link parameters array triggers a navigation.-->
+                    <li  *ngIf="authService.loggedIn()"> <a href="#" (click)="logOut()"> Logout</a>  </li>                                <!-- when currentUser click logout in the navbar,then load the http://localhost:4200/login page -->
+                </ul>
+
+            </li>
+
+        </ul>
+    </div>
+
+  </div>
+</nav>

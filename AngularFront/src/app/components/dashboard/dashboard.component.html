@@ -1,0 +1,51 @@
+
+<!--breadcrumb-->
+<ol class="breadcrumb">
+  <li><a>Dashboard</a></li>
+</ol>
+
+<!--welcome currentUser-->
+<div class="intro">
+  <h2 class="text-center">Welcome, {{currentUser?.name}}</h2>
+  <hr style="width:900px">
+  <p class="text-center">Please select an option to proceed </p>
+</div>
+
+<!--boxes-->
+<div class="features-boxed" style="background-color:white">
+        <div class="row features">
+
+
+            <div class="col-md-4 col-sm-6 item">
+              <div class="box" style="background-color:#e6faff"><a class="text-primary" href="#" [routerLink]="['/profile']"><i class="glyphicon glyphicon-user icon"></i><h3 class="name">My Account</h3></a></div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 item">
+              <div class="box" style="background-color:#e6faff"><a class="text-primary" href="#" [routerLink]="['/deadlinesandtasks']"><i class="glyphicon glyphicon-time icon"></i><h3 class="name">My Deadlines</h3></a></div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 item">
+              <div class="box" style="background-color:#e6faff"><a class="text-primary" href="#" [routerLink]="['/editproject']"><i class="glyphicon glyphicon-edit icon"></i><h3 class="name">Edit My Projects</h3></a></div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 item">    <!--Participatory projects-->
+              <div class="box" style="background-color:#e6faff"><a class="text-primary" href="#" [routerLink]="['/participatoryprojects']"><i class="glyphicon glyphicon-tasks icon"></i><h3 class="name">Participatory Projects</h3></a></div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 item">
+              <div class="box" style="background-color:#e6faff"><a class="text-primary" href="#" [routerLink]="['/addproject']"><i class="glyphicon glyphicon-plus icon"></i><h3 class="name">Create Project</h3></a></div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 item">
+              <div class="box" style="background-color:#e6faff"><a class="text-primary" href="#" [routerLink]="['/projectlog']"><i class="glyphicon glyphicon-list-alt icon"></i><h3 class="name">My Project Log</h3></a></div>
+            </div>
+
+
+        </div>
+
+
+</div>
+
+
+
+

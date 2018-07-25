@@ -1,0 +1,198 @@
+<!--Edit My Projects Main-->
+<div *ngIf="!checkstatustodisplaychangedeadline() && !checkstatustodisplayaddtaskform()"
+     class="container container-fluid" style="background-color:#ffffff;">
+    <form class="form-inline">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a [routerLink]="['/dashboard']"><span>Dashboard </span></a></li>
+                    <li><a><span>Edit Project</span></a></li>
+                </ol>
+            </div>
+            <div class="col-md-10 col-md-offset-1" style="margin-top:90px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" style="font-size:25px;"><strong>Edit My Projects</strong></h1></div>
+                    <div class="panel-body">
+                        <legend style="font-size:18px;"><strong>Click the buttons below to edit each project</strong>
+                        </legend>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Project Title</th>
+                                    <th>Project Manger</th>
+                                    <th>Project Details</th>
+                                    <th>Project Deadline</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let project of managerProjects">
+                                    <td>{{project.projectTitle}}</td>
+                                    <td>{{project.projectMangerEmail}}</td>
+                                    <td>{{project.projectDetails}}</td>
+                                    <td>{{project.projectDeadLine}}</td>
+                                    <td>
+                                        <button class="btn btn-primary" type="button"
+                                                (click)="changestatustodisplaychangedeadline(project._id)">Change
+                                            Deadline
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary" type="button"
+                                                (click)="changestatustodisplayaddtask(project._id)">Add New Tasks
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--Update Deadline-->
+<div *ngIf="checkstatustodisplaychangedeadline()" class="container container-fluid" style="background-color:#ffffff;">
+    <form (submit)="updateDeadLine()">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a [routerLink]="['/dashboard']"><span>Dashboard</span></a></li>
+                    <li><a><span>Edit Project</span></a></li>
+                    <li><a><span>Change Deadline</span></a></li>
+                </ol>
+            </div>
+            <div class="col-md-6 col-md-offset-3" style="margin-top:2px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" style="font-size:25px;"><strong>Change Deadline</strong></h1></div>
+                    <div class="panel-body">
+                        <fieldset>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    <legend style="font-size:18px;"><strong>Choose a Date To Change Deadline</strong>
+                                    </legend>
+                                    <div class="form-group">    <!-- Project Deadline-->
+                                        <label class="control-label">DeadLine</label>
+                                        <input class="form-control" type="date" name="projectDeadLine"
+                                               [(ngModel)]="projectDeadLine">
+                                    </div>
+                                    <div *ngIf="!formValidate()" class="form-group">      <!--Change Deadline Button-->
+                                        <button class="btn btn-primary" type="submit">Confirm</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--Add New Tasks-->
+<div *ngIf="checkstatustodisplayaddtaskform()" class="container container-fluid" style="background-color:#ffffff;">
+    <form (submit)="addTask()">
+        <div class="row">
+            <div class="col-md-12">
+                <ol class="breadcrumb">
+                    <li><a [routerLink]="['/dashboard']"><span>Dashboard</span></a></li>
+                    <li><a><span>Edit Project</span></a></li>
+                    <li><a><span>Add New Tasks</span></a></li>
+                </ol>
+            </div>
+            <div class="col-md-6 col-md-offset-3" style="margin-top:2px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title" style="font-size:25px;"><strong>Add Tasks</strong></h1></div>
+                    <div class="panel-body">
+                        <fieldset>
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+
+                                    <legend style="font-size:18px;"><strong>Enter Below Details To Add A New
+                                        Task</strong></legend>
+
+
+                                    <div class="form-group">    <!-- Task Title-->
+                                        <label class="control-label">Task Title</label>
+                                        <input type="text" class="form-control" required=""
+                                               placeholder="Enter Task Title" name="taskTitle"
+                                               [(ngModel)]="taskTitle">
+                                    </div>
+
+                                    <div class="form-group">    <!-- Task Start Date-->
+                                        <label class="control-label">Start Date</label>
+                                        <input class="form-control" type="date" required="" name="taskStartDate"
+                                               [(ngModel)]="taskStartDate">
+                                    </div>
+
+                                    <div class="form-group">    <!-- Task Deadline-->
+                                        <label class="control-label">DeadLine</label>
+                                        <input class="form-control" type="date" required="" name="taskDeadLine"
+                                               [(ngModel)]="taskDeadLine">
+                                    </div>
+
+
+                                    <div class="form-group">    <!-- Task Details-->
+                                        <label class="control-label">Task Details</label>
+                                        <textarea class="form-control" required="" placeholder="Enter Task Details"
+                                                  name="taskDetails"
+                                                  [(ngModel)]="taskDetails"></textarea>
+                                    </div>
+
+
+                                    <div *ngIf="!formValidateAddNewTask()" class="form-group">      <!--Add Task Button-->
+                                        <button type="button" class="btn btn-primary" (click)="addTaskToArr()">Add
+                                            Task
+                                        </button>
+                                        <!--clear field Button-->
+                                        <button type="reset" class="btn btn-dark" >clear fields</button>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <fieldset>
+                                            <ol class="list-group" *ngFor="let arrTask of projectTasks">
+                                                <div class="form-group">
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        {{arrTask.taskTitle}}
+                                                        <span class="badge badge-primary badge-pill"></span>
+                                                    </li>
+                                                </div>
+
+                                            </ol>
+                                        </fieldset>
+                                    </div>
+
+                                    <div *ngIf="!formValidateAddNewTask()" class="form-group">      <!--Clear Task Button-->
+                                        <button type="button" class="btn btn-dark" (click)="clearTaskFromArr()">Clear
+                                            Selected Tasks
+                                        </button>
+                                        <!--Confirm Task Button-->
+                                        <button  class="btn btn-primary" type="submit">Confirm Task</button>
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+

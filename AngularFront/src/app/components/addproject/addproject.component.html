@@ -1,0 +1,232 @@
+
+<!--Create A Project Main View-->
+<div *ngIf="!changeStatusAddProjectToAddTasks()&&!changeStatusAddTasksToAddMembers()" class="container container-fluid" style="background-color:#ffffff;">
+  <form (submit)="addProject()">
+    <!-- when currentUser fill form and click the add project button then addProject() is triggerd-->
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li><a [routerLink]="['/dashboard']"><span>Dashboard</span></a></li>
+          <li><a><span>Add Project</span></a></li>
+        </ol>
+      </div>
+      <div class="col-md-6 col-md-offset-3" style="margin-top:2px;">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title" style="font-size:25px;"><strong>Create A Project</strong></h1></div>
+          <div class="panel-body">
+            <fieldset>
+              <div class="row">
+
+                <div class="col-md-12">
+
+                  <legend style="font-size:18px;"><strong>Enter Below Details To Add A new Project</strong></legend>
+
+
+                  <div class="form-group">    <!-- Project Title-->
+                    <label class="control-label">Project Title</label>
+                    <input type="text" class="form-control" required placeholder="Enter Project Title"
+                           name="projectTitle" [(ngModel)]="projectTitle">
+                  </div>
+
+
+                  <div class="form-group">    <!-- Project Start date-->
+                    <label class="control-label">Start Date</label>
+                    <input class="form-control" type="date" required name="projectStartDate"
+                           [(ngModel)]="projectStartDate">
+                  </div>
+
+                  <div class="form-group">    <!-- Project Deadline-->
+                    <label class="control-label">DeadLine</label>
+                    <input class="form-control" type="date" required name="projectDeadLine"
+                           [(ngModel)]="projectDeadLine">
+                  </div>
+
+
+                  <div class="form-group">    <!-- Project Details-->
+                    <label class="control-label">Project Details</label>
+                    <textarea class="form-control" required placeholder="Enter Project Details" name="projectDetails"
+                              [(ngModel)]="projectDetails"></textarea>
+                  </div>
+
+
+                  <div class="form-group">      <!--Add Project Button-->
+                    <button class="btn btn-primary" type="submit">Add Project</button>
+                  </div>
+
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+<!--Add Task View-->
+<div *ngIf="changeStatusAddProjectToAddTasks()" class="container container-fluid" style="background-color:#ffffff;">
+  <form (submit)="addTask()">
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li><a [routerLink]="['/dashboard']"><span>Dashboard</span></a></li>
+          <li><a><span>Add Project</span></a></li>
+          <li><a><span>Add Task</span></a></li>
+        </ol>
+      </div>
+      <div class="col-md-6 col-md-offset-3" style="margin-top:2px;">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title" style="font-size:25px;"><strong>Add Tasks</strong></h1></div>
+          <div class="panel-body">
+            <fieldset>
+              <div class="row">
+
+                <div class="col-md-12">
+
+
+                      <legend style="font-size:18px;"><strong>Enter Below Details To Add A Task</strong></legend>
+
+
+                      <div class="form-group">    <!-- Task Title-->
+                        <label class="control-label">Task Title</label>
+                        <input type="text" class="form-control" required placeholder="Enter Task Title" name="taskTitle"
+                               [(ngModel)]="taskTitle">
+                      </div>
+
+
+                      <div class="form-group">    <!-- Task Start Date-->
+                        <label class="control-label">Start Date</label>
+                        <input class="form-control" type="date" required name="taskStartDate"
+                               [(ngModel)]="taskStartDate">
+                      </div>
+
+                      <div class="form-group">    <!-- Task Deadline-->
+                        <label class="control-label">DeadLine</label>
+                        <input class="form-control" type="date" required name="taskDeadLine" [(ngModel)]="taskDeadLine">
+                      </div>
+
+
+                      <div class="form-group">    <!-- Task Details-->
+                        <label class="control-label">Task Details</label>
+                        <textarea class="form-control" required placeholder="Enter Task Details" name="taskDetails"
+                                  [(ngModel)]="taskDetails"></textarea>
+                      </div>
+
+
+                      <div *ngIf="!formValidateAddNewTask()" class="form-group">      <!--Add Task Button-->
+                        <button type="button" class="btn btn-primary" (click)="addTaskToArr()">Add Task</button>
+                                                    <!--clear field Button-->
+                        <button type="reset" class="btn btn-dark">clear fields</button>
+                      </div>
+
+
+                      <div class="form-group">
+                        <fieldset>
+                          <ol class="list-group" *ngFor="let arrTask of projectTasks">
+                            <div class="form-group">
+                              <li class="list-group-item d-flex justify-content-between align-items-center">
+                                {{arrTask.taskTitle}}
+                                <span class="badge badge-primary badge-pill"></span>
+                              </li>
+                            </div>
+
+                          </ol>
+                        </fieldset>
+                      </div>
+
+                      <div *ngIf="!formValidateAddNewTask()" class="form-group">      <!--Clear Task Button-->
+                        <button type="button" class="btn btn-dark" (click)="clearTaskFromArr()">Clear Selected Tasks</button>
+                                                    <!--Confirm Task Button-->
+                        <button class="btn btn-primary" type="submit">Confirm Task</button>
+                      </div>
+
+
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+
+<!--Add Members View-->
+<div *ngIf="changeStatusAddTasksToAddMembers()" class="container container-fluid" style="background-color:#ffffff;">
+  <form (submit)="addMembers()">       <!-- when currentUser fill form and click the add project button then addProject() is triggerd-->
+    <div class="row">
+      <div class="col-md-12">
+        <ol class="breadcrumb">
+          <li><a [routerLink]="['/dashboard']"><span>Dashboard</span></a></li>
+          <li><a><span>Add Project</span></a></li>
+          <li><a><span>Add Task</span></a></li>
+          <li><a><span>Add Members to Project</span></a></li>
+        </ol>
+      </div>
+      <div class="col-md-6 col-md-offset-3" style="margin-top:2px;">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title" style="font-size:25px;"><strong>Add Members</strong></h1></div>
+          <div class="panel-body">
+            <fieldset>
+              <div class="row">
+
+                <div class="col-md-12">
+
+                  <legend style="font-size:18px;"><strong>Choose Members To Project</strong></legend>
+
+
+                  <div class="table-responsive">
+                    <table class="table table-striped">
+                      <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Project Count</th>
+                        <th>ADD/Cancel</th>
+
+                      </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let arrMember of Members">
+                            <td *ngIf="!AvoidCurrentUserInAddMembers(arrMember.email)">{{arrMember.name}}</td>
+                            <td *ngIf="!AvoidCurrentUserInAddMembers(arrMember.email)">{{arrMember.email}}</td>
+                            <td *ngIf="!AvoidCurrentUserInAddMembers(arrMember.email)">{{arrMember.projectCount}}</td>
+
+                            <td *ngIf="!AvoidCurrentUserInAddMembers(arrMember.email)">
+                              <button type="button" *ngIf="!AvoidAddingSameMember(arrMember.email)" (click)="addMembersToArr(arrMember.email,arrMember.projectCount,arrMember.name)" class="btn btn-info" data-toggle="button" aria-pressed="false" autocomplete="off">
+                                Add Member</button>
+                            </td>
+
+                          </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="form-group">      <!--Confirm Members Button-->
+
+                    <button class="btn btn-primary" type="submit">Confirm Members to project</button>
+                  </div>
+
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

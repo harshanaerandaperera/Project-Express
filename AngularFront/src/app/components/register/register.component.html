@@ -1,0 +1,75 @@
+<form (submit)="registerData()">
+  <div class="row">
+
+    <div class="col-md-6 col-md-offset-3" style="margin-top:90px;">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h1 class="panel-title" style="font-size:25px;"><strong>Create your Account</strong></h1></div>
+        <div class="panel-body">
+          <fieldset>
+            <legend style="font-size:18px;"><strong>to continue to PMS</strong></legend>
+          </fieldset>
+          <fieldset>
+            <div class="row">
+
+
+              <div class="col-md-12">     <!-- Username-->
+                <div class="form-group">
+                  <label class="control-label">Username</label>
+                  <!--[(ngModel)] is the syntax for two-way data binding. When developing data entry forms, you often both display a data property and update that property when the currentUser makes changes. Two-way data binding with the NgModel directive makes that easy.-->
+                  <input type="text" class="form-control" placeholder="Enter your username" required="" name="username"
+                         [(ngModel)]="username">    <!--FormsModule is required to use ngModel-->
+                </div>
+              </div>
+
+
+              <div class="col-md-12">     <!-- Name-->
+                <div class="form-group">
+                  <label class="control-label">Full Name</label>
+                  <input type="text" class="form-control" placeholder="Enter your name" required="" name="name"
+                         [(ngModel)]="name">
+                  <!--  [(ngModel)] = Provides two-way data-binding, parsing, and validation for form controls-->
+                </div>
+              </div>
+
+
+              <div class="col-md-12">
+                <div class="form-group">     <!-- Email-->
+                  <label class="control-label">Email</label>
+                  <input type="email" class="form-control" placeholder="Enter your email" required="" name="email"
+                         [(ngModel)]="email">
+                  <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+              </div>
+
+
+              <div class="col-md-12">
+                <div class="form-group">    <!-- password-->
+                  <label class="control-label">Password</label>
+                  <input type="password" class="form-control" placeholder="Enter your password" required=""
+                         name="password" [(ngModel)]="password">
+                </div>
+              </div>
+
+
+              <div class="col-md-12">       <!-- Sign Up button-->
+                <div class="form-group">
+                  <button class="btn btn-primary" type="submit">Sign Up</button>
+                </div>
+              </div>
+
+
+              <div class="col-sm-8">      <!-- Sign in instead link-->
+                <label class="control-label">Already have an account? </label>
+                <a class="nav-link" [routerLink]="['/login']">Sign in instead</a>
+              </div>
+
+
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
