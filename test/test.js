@@ -1,4 +1,4 @@
-const chakram = require('chakram'),             //refer http://dareid.github.io/chakram/jsdoc/module-chakram.html#.post
+const chakram = require('chakram'),
     expect = chakram.expect;
 
 describe("API Testing", () => {
