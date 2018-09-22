@@ -1,12 +1,28 @@
 # Project-Express - Open Source Project Mangement Tool
 
-This Project Include:
+This Project Mangement Tool Includes:
 
-   ● User registration​ ​and​ ​authentication.  
-   ● Creation​ ​of​ ​projects.  
-   ● Searching​ ​of​ ​stored​ ​projects​ ​using​ ​a​ ​variety​ ​of​ ​criteria.  
-   ● Sharing​ ​of​ ​projects​ ​amongst​ ​users.  
-   ● Some​ ​aspect​ ​of​ ​the​ ​management​ ​of​ ​the​ ​project​ ​lifecycle. 
+   ● User registration and authentication<br>
+   ● Access Controls<br>
+   ● Project planning and scheduling<br>
+   ● Task management<br>
+   ● Team collaboration<br>
+   ● Time tracking<br>
+   ● Dependencies and Wait Time<br>
+   ● Deadline Alerts<br>
+   
+
+<br/>
+<a href="https://ibb.co/ddJjK9"><img src="https://image.ibb.co/g7djK9/Dashboard.png" alt="Dashboard" border="0"></a>
+<br>
+<a href="https://ibb.co/cWM4K9"><img src="https://preview.ibb.co/m1cde9/create_a_project.png" alt="create_a_project" border="0"></a>
+<a href="https://ibb.co/cHrh6p"><img src="https://thumb.ibb.co/cHrh6p/signUP.png" alt="signUP" border="0"></a>
+<br>
+<a href="https://ibb.co/db3Ump"><img src="https://thumb.ibb.co/db3Ump/my_account.png" alt="my_account" border="0"></a>
+<a href="https://ibb.co/dhErz9"><img src="https://thumb.ibb.co/dhErz9/Edit_Projects.png" alt="Edit_Projects" border="0"></a>
+<a href="https://ibb.co/fLdJe9"><img src="https://thumb.ibb.co/fLdJe9/project_Log.png" alt="project_Log" border="0"></a>
+<a href="https://ibb.co/mJR4K9"><img src="https://thumb.ibb.co/mJR4K9/Deadlines_and_tasks.png" alt="Deadlines_and_tasks" border="0"></a>
+</br>
 
 ## Setup
 
@@ -18,7 +34,7 @@ npm install
 
 or manually clone the repo and then run `npm install`.
 
-###  Make sure you have installed mongoDB.
+###  Make sure you have installed mongoDB Up and Running.
 
 ### Running the server
 
@@ -30,4 +46,10 @@ npm start
 
 ```bash
 mocha
+```
+### Running the Angular Client
+
+```js
+cd AngularFront
+ng serve
 ```
