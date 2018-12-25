@@ -35,6 +35,9 @@ npm install
 or manually clone the repo and then run `npm install`.
 
 ###  Make sure you have installed mongoDB Up and Running.
+```js
+Run mongod.exe
+```
 
 ### Running the server
 
